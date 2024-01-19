@@ -13,8 +13,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/bosquejun/iconsax-monorepo.git/packages/react-svg"
+    "url": "https://github.com/bosquejun/iconsax-monorepo.git"
   },
+  "displayName": "Iconsax React SVG",
   "author": {
     "name": "Jun Bosque",
     "email": "bosque.junpaul@gmail.com"
