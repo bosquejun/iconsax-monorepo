@@ -5,6 +5,7 @@ import recursive from "recursive-readdir";
 import fs from "fs";
 
 import * as xml2js from "xml2js";
+import createReactNativeSvgTemplate from "./react-native-svg.template";
 import createReactSvgTemplate from "./react-svg.template";
 
 const workspaceRoot = path.resolve(__dirname, "../../../");
@@ -18,6 +19,42 @@ const reactSvgDir = path.resolve(reactPackageDir, "src/svg");
 const parser = new xml2js.Parser();
 
 const numberToWords = require("number-to-words");
+
+const OUTPUT_TYPE = ["react-svg", "react-native-svg"] as const;
+
+type OutputType = (typeof OUTPUT_TYPE)[number];
+
+type OutputSettings = {
+  outputBaseDir: string;
+  outputSvgDir: string;
+  type: OutputType;
+  template: (props: any) => string | never;
+};
+
+const getOutputSettings = (type?: OutputType): OutputSettings[] => {
+  if (!type)
+    return OUTPUT_TYPE.map((type) => getOutputSettings(type)[0] as any);
+
+  const outputBaseDir = path.resolve(workspaceRoot, `packages/${type}`);
+
+  return [
+    {
+      type,
+      outputBaseDir,
+      outputSvgDir: path.resolve(outputBaseDir, "src/svg"),
+      template: (() => {
+        switch (type) {
+          case "react-svg":
+            return createReactSvgTemplate;
+          case "react-native-svg":
+            return createReactNativeSvgTemplate;
+          default:
+            throw new Error("Invalid type");
+        }
+      })(),
+    },
+  ];
+};
 
 const prepareSvgCompProps = (
   svgProps: any,
@@ -43,10 +80,11 @@ const convertObjToStringProps = (obj: any) => {
     .replace(/(\w+)="{{(\w+)}}"/g, "$1={$2}");
 };
 
-(async () => {
-  const [svgSourceFolder, type] = process.argv.slice(2);
-
-  const outputDir = reactSvgDir;
+const startConversion = (
+  svgSourceFolder: string,
+  outputSettings: OutputSettings
+) => {
+  const { template, outputSvgDir: outputDir, type } = outputSettings;
 
   const reactIndexDir = path.resolve(outputDir, "index.tsx");
 
@@ -85,7 +123,7 @@ const convertObjToStringProps = (obj: any) => {
         .join("")
         .replace(/[^a-zA-Z0-9]/g, "");
 
-      console.log(`Generating react icon component: ${componentName}`);
+      console.log(`[${type}]Generating react icon component: ${componentName}`);
 
       const svgRaw = fs.readFileSync(file, "utf8");
 
@@ -106,7 +144,7 @@ const convertObjToStringProps = (obj: any) => {
         width: "size",
       });
 
-      const componentData = createReactSvgTemplate({
+      const componentData = template({
         componentName,
         pathProps,
         svgProps,
@@ -134,7 +172,15 @@ const convertObjToStringProps = (obj: any) => {
         flag: "w+",
       }
     );
-
-    process.exit(0);
   });
+};
+
+(async () => {
+  const [svgSourceFolder, type] = process.argv.slice(2);
+
+  const outputs = getOutputSettings(type as OutputType);
+
+  for (const output of outputs) {
+    await startConversion(svgSourceFolder, output);
+  }
 })();

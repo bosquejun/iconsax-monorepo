@@ -27,8 +27,8 @@ out/
 build
 dist
 
-packages/rect-svg/src/svg
-
+packages/react-svg/src/svg/
+packages/react-native-svg/src/svg/
 
 # Debug
 npm-debug.log*

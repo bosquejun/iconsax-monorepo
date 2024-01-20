@@ -1,10 +1,10 @@
-import { Button } from "@repo/ui/button";
-import { Card } from "@repo/ui/card";
-import { Code } from "@repo/ui/code";
+import { Button } from "@iconsax/ui/button";
+import { Card } from "@iconsax/ui/card";
+import { Code } from "@iconsax/ui/code";
 import Image from "next/image";
 import styles from "./page.module.css";
 
-import { Home1BoldIcon } from "../../../packages/react-svg/src";
+import { Home1BoldIcon } from "iconsax-react-svg";
 
 function Gradient({
   conic,

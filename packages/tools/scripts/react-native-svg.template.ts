@@ -1,13 +1,14 @@
-
-
 type ReactIconTemplateProps = {
-    componentName:string,
-    svgProps:string;
-    Paths:string[];
-}
-export default function createReactIconTemplate({componentName,Paths,svgProps}:ReactIconTemplateProps) {
-    return `
-    import React from 'react'
+  componentName: string;
+  svgProps: string;
+  pathProps: string[];
+};
+export default function createReactNativeSvgTemplate({
+  componentName,
+  pathProps,
+  svgProps,
+}: ReactIconTemplateProps) {
+  return `
     import {
       Svg,
       Path,
@@ -16,18 +17,19 @@ export default function createReactIconTemplate({componentName,Paths,svgProps}:R
 
     type IconPropTypes = SvgProps & {
       size?: number,
+      color?: string,
     }
     
     const ${componentName} = (props:IconPropTypes) => {
       const { color = 'black', size = 24, ...otherProps } = props
       return (
         <Svg ${svgProps} {...otherProps} >
-          ${Paths.join("\n")}
+        ${pathProps.map((path) => `<Path ${path} />`).join("\n")}
         </Svg>
       )
     }
     
     
     export default ${componentName};
-      `
+      `;
 }

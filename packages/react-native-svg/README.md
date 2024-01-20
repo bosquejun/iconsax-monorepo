@@ -1,7 +1,7 @@
 <article ><a name="user-content-readme-top"></a></p>
 
 <div align="center">
-  <h1 align="center"></a>Iconsax React SVG</h1>
+  <h1 align="center"></a>Iconsax React Native SVG</h1>
   <p align="center">
     Latest Iconsax pack in different designs </strong>
   </p>
@@ -15,13 +15,13 @@
 - Install Yarn package
 
 ```bash
-yarn add iconsax-react-svg
+yarn add iconsax-react-native-svg
 ```
 
 - Install NPM package
 
 ```bash
-npm install iconsax-react-svg
+npm install iconsax-react-native-svg
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ npm install iconsax-react-svg
 Local registration:
 
 ```jsx
-import { Home1BoldIcon } from "iconsax-react-svg";
+import { Home1BoldIcon } from "iconsax-react-native-svg";
 
 function App() {
   return (

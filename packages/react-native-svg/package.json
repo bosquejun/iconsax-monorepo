@@ -31,8 +31,10 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@iconsax/typescript-config": "*",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-native-svg": "^14.1.0"
   },
   "badges": [
     "typescript",
