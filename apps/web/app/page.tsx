@@ -4,6 +4,7 @@ import { Code } from "@repo/ui/code";
 import Image from "next/image";
 import styles from "./page.module.css";
 
+import { Home1BoldIcon } from "../../../packages/react-svg/src";
 
 function Gradient({
   conic,
@@ -82,6 +83,8 @@ export default function Page(): JSX.Element {
       <Button appName="web" className={styles.button}>
         Click me!
       </Button>
+
+      <Home1BoldIcon size={128} color="red" />
 
       <div className={styles.hero}>
         <div className={styles.heroContent}>

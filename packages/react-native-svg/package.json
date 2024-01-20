@@ -1,15 +1,15 @@
 {
-  "name": "iconsax-react-svg",
-  "version": "0.0.2",
+  "name": "iconsax-react-native-svg",
+  "version": "0.0.1",
   "main": "./src/index.tsx",
   "license": "MIT",
-  "description": "Iconsax React SVG package",
+  "description": "Iconsax React Native SVG package",
   "keywords": [
     "iconsax",
-    "react",
+    "react-native",
     "svg",
     "icons",
-    "iconsax-react-svg"
+    "iconsax-react-native-svg"
   ],
   "repository": {
     "type": "git",
@@ -38,6 +38,7 @@
     "typescript",
     "react",
     "react-dom",
+    "react-native",
     "svg"
   ]
 }

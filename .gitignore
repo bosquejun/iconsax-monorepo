@@ -27,6 +27,8 @@ out/
 build
 dist
 
+packages/rect-svg/src/svg
+
 
 # Debug
 npm-debug.log*
