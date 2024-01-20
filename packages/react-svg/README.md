@@ -21,7 +21,7 @@ yarn add iconsax-react-svg
 - Install NPM package
 
 ```bash
-npm install iconsax-react-svg
+npm install @junbosque/iconsax-react-svg
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ npm install iconsax-react-svg
 Local registration:
 
 ```jsx
-import { Home1BoldIcon } from "iconsax-react-svg";
+import { Home1BoldIcon } from "@junbosque/iconsax-react-svg";
 
 function App() {
   return (

@@ -7,12 +7,11 @@ import fs from "fs";
 import * as xml2js from "xml2js";
 import createReactNativeSvgTemplate from "./react-native-svg.template";
 import createReactSvgTemplate from "./react-svg.template";
+import createReactTamaguiTemplate from "./react-tamagui.template";
 
 const workspaceRoot = path.resolve(__dirname, "../../../");
 
 const reactPackageDir = path.resolve(workspaceRoot, "packages/react-svg");
-
-const reactSvgDir = path.resolve(reactPackageDir, "src/svg");
 
 // ...
 
@@ -20,7 +19,7 @@ const parser = new xml2js.Parser();
 
 const numberToWords = require("number-to-words");
 
-const OUTPUT_TYPE = ["react-svg", "react-native-svg"] as const;
+const OUTPUT_TYPE = ["react-svg", "react-native-svg", "react-tamagui"] as const;
 
 type OutputType = (typeof OUTPUT_TYPE)[number];
 
@@ -41,13 +40,15 @@ const getOutputSettings = (type?: OutputType): OutputSettings[] => {
     {
       type,
       outputBaseDir,
-      outputSvgDir: path.resolve(outputBaseDir, "src/svg"),
+      outputSvgDir: path.resolve(outputBaseDir, "src"),
       template: (() => {
         switch (type) {
           case "react-svg":
             return createReactSvgTemplate;
           case "react-native-svg":
             return createReactNativeSvgTemplate;
+          case "react-tamagui":
+            return createReactTamaguiTemplate;
           default:
             throw new Error("Invalid type");
         }
@@ -159,7 +160,7 @@ const startConversion = (
         flag: "w+",
       });
       componentImports.push(
-        `export {default as ${componentName}} from './${iconType}/${componentName}';`
+        `export {default as ${componentName}} from './${iconType}/${componentName}.js';`
       );
     }
 

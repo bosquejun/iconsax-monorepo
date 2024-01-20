@@ -1,8 +1,24 @@
 {
-  "name": "@junbosque/iconsax-react-svg",
+  "name": "@junbosque/iconsax-react-tamagui",
   "version": "1.0.0",
   "license": "MIT",
-  "description": "Iconsax React SVG package",
+  "description": "Iconsax Tamagui Icon package",
+  "keywords": [
+    "iconsax",
+    "react-native",
+    "svg",
+    "icons",
+    "iconsax-react-native-svg"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bosquejun/iconsax-monorepo.git"
+  },
+  "displayName": "Iconsax Tamagui React Icons",
+  "author": {
+    "name": "Jun Bosque",
+    "email": "bosque.junpaul@gmail.com"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -39,22 +55,6 @@
     "start": "ts-node ./src/index.tsx",
     "publish-package": "yarn build && yarn publish --access public"
   },
-  "keywords": [
-    "iconsax",
-    "react",
-    "svg",
-    "icons",
-    "iconsax-react-svg"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bosquejun/iconsax-monorepo.git"
-  },
-  "displayName": "Iconsax React SVG",
-  "author": {
-    "name": "Jun Bosque",
-    "email": "bosque.junpaul@gmail.com"
-  },
   "devDependencies": {
     "react": "^18.2.0",
     "ts-node": "^10.9.2",
@@ -62,13 +62,17 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@tamagui/helpers-icon": "^1.86.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-native-svg": "^14.1.0",
+    "tamagui": "^1.86.6"
   },
   "badges": [
     "typescript",
     "react",
     "react-dom",
+    "react-native",
     "svg"
   ]
 }

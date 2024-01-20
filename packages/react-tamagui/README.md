@@ -15,13 +15,13 @@
 - Install Yarn package
 
 ```bash
-yarn add @junbosque/iconsax-react-native-svg
+yarn add @junbosque/iconsax-react-tamagui
 ```
 
 - Install NPM package
 
 ```bash
-npm install @junbosque/iconsax-react-native-svg
+npm install @junbosque/iconsax-react-tamagui
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ npm install @junbosque/iconsax-react-native-svg
 Local registration:
 
 ```jsx
-import { Home1BoldIcon } from "@junbosque/iconsax-react-native-svg";
+import { Home1BoldIcon } from "@junbosque/iconsax-react-tamagui";
 
 function App() {
   return (

@@ -27,8 +27,9 @@ out/
 build
 dist
 
-packages/react-svg/src/svg/
-packages/react-native-svg/src/svg/
+packages/react-svg/src/
+packages/react-native-svg/src/
+packages/react-tamagui/src/
 
 # Debug
 npm-debug.log*

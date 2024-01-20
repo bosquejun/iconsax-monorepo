@@ -1,7 +1,6 @@
 {
-  "name": "iconsax-react-native-svg",
-  "version": "0.0.1",
-  "main": "./src/index.tsx",
+  "name": "@junbosque/iconsax-react-native-svg",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "Iconsax React Native SVG package",
   "keywords": [
@@ -15,23 +14,54 @@
     "type": "git",
     "url": "https://github.com/bosquejun/iconsax-monorepo.git"
   },
-  "displayName": "Iconsax React SVG",
+  "displayName": "Iconsax React Native SVG",
   "author": {
     "name": "Jun Bosque",
     "email": "bosque.junpaul@gmail.com"
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "tsup": {
+    "clean": true,
+    "sourcemap": true,
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "bundle": false,
+    "dts": true,
+    "treeshake": true,
+    "target": "node18",
+    "entry": [
+      "./src/**/*.tsx"
+    ]
+  },
   "scripts": {
-    "build": "rimraf dist && tsc && cp package.json README.md dist/",
+    "build": "rimraf dist/ && tsup",
     "start": "ts-node ./src/index.tsx",
-    "publish-package": "yarn build && yarn publish"
+    "publish-package": "yarn build && yarn publish --access public"
   },
   "devDependencies": {
     "react": "^18.2.0",
     "ts-node": "^10.9.2",
+    "tsup": "^8.0.1",
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@iconsax/typescript-config": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-native-svg": "^14.1.0"
